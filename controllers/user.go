@@ -5,6 +5,8 @@ import (
 )
 
 func GetUser(c *gin.Context) {
-	c.JSON(200, gin.H{"message": "user getUser"})
+	user := c.MustGet("jwt")
+
+	c.JSON(200, gin.H{"message": "user getUser", "user": user})
 	return
 }

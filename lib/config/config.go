@@ -17,7 +17,7 @@ func Init(env string) {
 	v.SetConfigType("yaml")
 	v.SetConfigName(env)
 	if env == "test" {
-		v.AddConfigPath("./config/")
+		v.AddConfigPath("../config/")
 	} else {
 		v.AddConfigPath("./config/")
 	}

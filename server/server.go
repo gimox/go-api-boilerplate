@@ -1,10 +1,21 @@
 package server
 
-import "ginapi/lib/config"
+import (
+	"github.com/gin-gonic/gin"
+
+	"../lib/config"
+)
+
 
 func Init() {
-	config := config.GetConfig()
+	configEnv := config.GetConfig() // get configuration enviroment ./config/yourenv
 
-	r := NewRouter(config)
-	r.Run(":" + config.GetString("server.port"))
+	// disable log per production mode
+	if configEnv.GetBool("production") {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
+
+	r := NewRouter(configEnv) // start routes
+	r.Run(":" + configEnv.GetString("server.port")) // start server
 }

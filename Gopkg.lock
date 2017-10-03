@@ -2,40 +2,16 @@
 
 
 [[projects]]
-  name = "github.com/dgrijalva/jwt-go"
-  packages = [".","request"]
-  revision = "d2709f9f1f31ebcda9651b03077758c1f3a0018c"
-  version = "v3.0.0"
-
-[[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "629574ca2a5df945712d3079857300b5e4da0236"
   version = "v1.4.2"
 
 [[projects]]
-  name = "github.com/gin-contrib/cors"
-  packages = ["."]
-  revision = "cf4846e6a636a76237a28d9286f163c132e841bc"
-  version = "v1.2"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/gin-contrib/gzip"
-  packages = ["."]
-  revision = "9b22cb967bcc8481c9fe3ab99f70d715f88980f0"
-
-[[projects]]
   branch = "master"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
   revision = "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/gin-gonic/contrib"
-  packages = ["jwt"]
-  revision = "5aa1e38d1d932e45fa5032bd1b8739e1a548e596"
 
 [[projects]]
   name = "github.com/gin-gonic/gin"
@@ -142,6 +118,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2731a2e185101f1744e7eeb245e46b90927f6d5a7b406ba24b69109c0afc73a7"
+  inputs-digest = "6948ddc29b6b6c0953e769a6b007136704fdc515c64b758c55b818b473b92e86"
   solver-name = "gps-cdcl"
   solver-version = 1

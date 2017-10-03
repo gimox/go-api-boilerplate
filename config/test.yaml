@@ -4,4 +4,4 @@ server:
 production: false
 
 jwt:
-  secret: 12345678
+  secret: 1234567

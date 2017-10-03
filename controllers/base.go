@@ -9,7 +9,6 @@ func Home(c *gin.Context) {
 	return
 }
 
-
 func Ping(c *gin.Context) {
 	c.JSON(200, gin.H{"message": "pong"})
 	return
