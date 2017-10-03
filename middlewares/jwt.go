@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"errors"
 	"log"
+	"net/http"
 )
 
 func JwtAuth(secret string, decode bool) gin.HandlerFunc {
@@ -16,8 +17,8 @@ func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 		})
 
 		if err != nil {
-			c.JSON(401, gin.H{"code": 101, "error": "Authorization token failed"})
-			c.AbortWithError(401, err)
+			c.JSON(http.StatusUnauthorized, gin.H{"code": 101, "error": "Authorization token failed"})
+			c.AbortWithError(http.StatusUnauthorized, err)
 			log.Println("token KO")
 			return
 		}
@@ -30,8 +31,8 @@ func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 				c.Set("jwt", decoded) // add decoded data for controller
 
 			} else {
-				c.JSON(401, gin.H{"code": 102, "error": "Authorization token failed"})
-				c.AbortWithError(401, errors.New("Authorization token failed!"))
+				c.JSON(http.StatusUnauthorized, gin.H{"code": 102, "error": "Authorization token failed"})
+				c.AbortWithError(http.StatusUnauthorized, errors.New("Authorization token failed!"))
 				log.Println("Unable to decode Token")
 			}
 

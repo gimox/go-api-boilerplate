@@ -27,11 +27,13 @@ func NewRouter(config *viper.Viper) *gin.Engine {
 	api := router.Group("/api")
 	v1 := api.Group("/v1")
 
+	// Authorization routes
 	auth := v1.Group("/auth")
 	{
-		auth.POST("/singIn", controllers.AuthSignIn)
+		auth.POST("/signIn", controllers.AuthSignIn)
 	}
 
+	// route protected with JWT
 	private := v1.Group("")
 	private.Use(middlewares.JwtAuth(config.GetString("jwt.secret"), true))
 	{
