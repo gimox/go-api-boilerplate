@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/dgrijalva/jwt-go"
+  packages = [".","request"]
+  revision = "d2709f9f1f31ebcda9651b03077758c1f3a0018c"
+  version = "v3.0.0"
+
+[[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "629574ca2a5df945712d3079857300b5e4da0236"
@@ -118,6 +124,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "6948ddc29b6b6c0953e769a6b007136704fdc515c64b758c55b818b473b92e86"
+  inputs-digest = "4d1d33b3b91e3fa00fde6705357632e32da889fbac7a6f45966ffeb0dbd6f593"
   solver-name = "gps-cdcl"
   solver-version = 1

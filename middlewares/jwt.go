@@ -4,8 +4,8 @@ import (
 	jwt_lib "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
 	"github.com/gin-gonic/gin"
-	"log"
 	"errors"
+	"log"
 )
 
 func JwtAuth(secret string, decode bool) gin.HandlerFunc {
@@ -16,24 +16,25 @@ func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 		})
 
 		if err != nil {
+			c.JSON(401, gin.H{"code": 101, "error": "Authorization token failed"})
 			c.AbortWithError(401, err)
-		}
-
-		c.Set("token", token)
-
-		if !decode {
-			log.Println("Jwt NO decode", token)
-			c.Next()
+			log.Println("token KO")
 			return
 		}
 
-		log.Println("Jwt decode invoked", token)
+		c.Set("token", token) // add raw token, so controller can decode itself
 
-		if decoded, ok := token.Claims.(jwt_lib.MapClaims); ok && token.Valid {
-			c.Set("jwt", decoded)
-			c.Next()
-		} else {
-			c.AbortWithError(401, errors.New("Authorization token failed!"))
+		if decode {
+
+			if decoded, ok := token.Claims.(jwt_lib.MapClaims); ok && token.Valid {
+				c.Set("jwt", decoded) // add decoded data for controller
+
+			} else {
+				c.JSON(401, gin.H{"code": 102, "error": "Authorization token failed"})
+				c.AbortWithError(401, errors.New("Authorization token failed!"))
+				log.Println("Unable to decode Token")
+			}
+
 		}
 
 	}

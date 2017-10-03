@@ -3,7 +3,7 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
-	"github.com/gin-contrib/gzip"
+	//"github.com/gin-contrib/gzip"
 	"github.com/spf13/viper"
 
 	"../middlewares"
@@ -15,22 +15,28 @@ func NewRouter(config *viper.Viper) *gin.Engine {
 
 	// middleware
 	router.Use(cors.Default())
-	router.Use(gzip.Gzip(gzip.DefaultCompression))
+	// router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
 	// base routes
-	router.GET("/", controllers.Home)
-	router.GET("/ping", controllers.Ping)
-	router.GET("/health", controllers.Health)
+	router.GET("/", controllers.BaseHome)
+	router.GET("/ping", controllers.BasePing)
+	router.GET("/health", controllers.BaseHealth)
 
 	api := router.Group("/api")
-	api.Use(middlewares.JwtAuth(config.GetString("jwt.secret"), true))
+	v1 := api.Group("/v1")
+
+	auth := v1.Group("/auth")
 	{
-		v1 := api.Group("/v1")
-		v1.GET("/user", controllers.GetUser)
+		auth.POST("/singIn", controllers.AuthSignIn)
 	}
 
+	private := v1.Group("")
+	private.Use(middlewares.JwtAuth(config.GetString("jwt.secret"), true))
+	{
+		private.GET("/user", controllers.GetUser)
+	}
 
 	return router
 }
