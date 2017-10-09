@@ -2,8 +2,7 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-
-	"../lib/config"
+	"go-api-boilerplate/lib/config"
 )
 
 

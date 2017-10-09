@@ -4,9 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
-
-	"./lib/config"
-	"./server"
+	"go-api-boilerplate/lib/config"
+	"go-api-boilerplate/server"
 )
 
 func main() {

@@ -3,7 +3,6 @@ package config
 import (
 	"log"
 	"path/filepath"
-
 	"github.com/spf13/viper"
 )
 
