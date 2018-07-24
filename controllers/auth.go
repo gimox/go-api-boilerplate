@@ -6,30 +6,21 @@ import (
 )
 
 type LoginCredentials struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
 }
 
 func AuthSignIn(c *gin.Context) {
 
-	var loginCrd LoginCredentials
+	var loginModel LoginCredentials
 
-	if c.BindJSON(&loginCrd) != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"code": 202, "message": "invalid username or password"})
+	if c.BindJSON(&loginModel) != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"code": 202, "message": "Invalid username or password"})
 		return
 	}
 
-	if loginCrd.Username == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"code": 202, "message": "Username can not be blank"})
-		return
-	}
 
-	if loginCrd.Password == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"code": 202, "message": "Password can not be blank"})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"message": "hi", "credentials": loginCrd})
+	c.JSON(http.StatusOK, gin.H{"message": "hi", "credentials": loginModel})
 
 	return
 }

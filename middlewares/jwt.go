@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	jwt_lib "github.com/dgrijalva/jwt-go"
+	jwtLib "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
 	"github.com/gin-gonic/gin"
 	"errors"
@@ -11,7 +11,7 @@ import (
 
 func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token, err := request.ParseFromRequest(c.Request, request.OAuth2Extractor, func(token *jwt_lib.Token) (interface{}, error) {
+		token, err := request.ParseFromRequest(c.Request, request.OAuth2Extractor, func(token *jwtLib.Token) (interface{}, error) {
 			b := ([]byte(secret))
 			return b, nil
 		})
@@ -27,7 +27,7 @@ func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 
 		if decode {
 
-			if decoded, ok := token.Claims.(jwt_lib.MapClaims); ok && token.Valid {
+			if decoded, ok := token.Claims.(jwtLib.MapClaims); ok && token.Valid {
 				c.Set("jwt", decoded) // add decoded data for controller
 
 			} else {
