@@ -2,6 +2,18 @@
 
 
 [[projects]]
+  name = "github.com/PuerkitoBio/purell"
+  packages = ["."]
+  revision = "0bcb03f4b4d0a9428594752bd2a3b9aa0a9d4bd4"
+  version = "v1.1.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/PuerkitoBio/urlesc"
+  packages = ["."]
+  revision = "de5bf2ad457846296e2031421a34e2568e304e35"
+
+[[projects]]
   name = "github.com/dgrijalva/jwt-go"
   packages = [
     ".",
@@ -24,12 +36,6 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/gin-contrib/gzip"
-  packages = ["."]
-  revision = "4fbfcc6122759afed2efbc762c4c41164a403951"
-
-[[projects]]
-  branch = "master"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
   revision = "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
@@ -43,6 +49,30 @@
   ]
   revision = "d459835d2b077e44f7c9b453505ee29881d5d12d"
   version = "v1.2"
+
+[[projects]]
+  name = "github.com/go-openapi/jsonpointer"
+  packages = ["."]
+  revision = "3a0015ad55fa9873f41605d3e8f28cd279c32ab2"
+  version = "0.15.0"
+
+[[projects]]
+  name = "github.com/go-openapi/jsonreference"
+  packages = ["."]
+  revision = "3fb327e6747da3043567ee86abd02bb6376b6be2"
+  version = "0.15.0"
+
+[[projects]]
+  name = "github.com/go-openapi/spec"
+  packages = ["."]
+  revision = "bce47c9386f9ecd6b86f450478a80103c3fe1402"
+  version = "0.15.0"
+
+[[projects]]
+  name = "github.com/go-openapi/swag"
+  packages = ["."]
+  revision = "2b0bd4f193d011c203529df626a65d63cb8a79e8"
+  version = "0.15.0"
 
 [[projects]]
   name = "github.com/golang/protobuf"
@@ -72,6 +102,16 @@
   packages = ["."]
   revision = "c2353362d570a7bfa228149c62842019201cfb71"
   version = "v1.8.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mailru/easyjson"
+  packages = [
+    "buffer",
+    "jlexer",
+    "jwriter"
+  ]
+  revision = "d5012789d6659eeed305f54c1b1542e7b65829e6"
 
 [[projects]]
   name = "github.com/mattn/go-isatty"
@@ -125,10 +165,36 @@
   version = "v1.0.2"
 
 [[projects]]
+  name = "github.com/swaggo/gin-swagger"
+  packages = [
+    ".",
+    "swaggerFiles"
+  ]
+  revision = "8cf3fa9932e247205d1cf2be6fd13a9d09ceb9a4"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/swaggo/swag"
+  packages = ["."]
+  revision = "db2ee6c14a35e4fca95b0d75054296ef2b699050"
+  version = "v1.3.2"
+
+[[projects]]
   name = "github.com/ugorji/go"
   packages = ["codec"]
   revision = "b4c50a2b199d93b13dc15e78929cfb23bfdf21ab"
   version = "v1.1.1"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "context",
+    "idna",
+    "webdav",
+    "webdav/internal/xml"
+  ]
+  revision = "3673e40ba22529d22c3fd7c93e97b0ce50fa7bdd"
 
 [[projects]]
   branch = "master"
@@ -139,12 +205,21 @@
 [[projects]]
   name = "golang.org/x/text"
   packages = [
+    "collate",
+    "collate/build",
+    "internal/colltab",
     "internal/gen",
+    "internal/tag",
     "internal/triegen",
     "internal/ucd",
+    "language",
+    "secure/bidirule",
     "transform",
+    "unicode/bidi",
     "unicode/cldr",
-    "unicode/norm"
+    "unicode/norm",
+    "unicode/rangetable",
+    "width"
   ]
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
@@ -164,6 +239,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "b070752576c5e0063b1c53259d6b8ad42c064259adc76271ea3a7b91aa1fda1e"
+  inputs-digest = "2f86c150a7d0e3db2c1fa1f44d752361bd62adca2c1f0b04447d947cfb2adb91"
   solver-name = "gps-cdcl"
   solver-version = 1

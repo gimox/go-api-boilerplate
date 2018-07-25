@@ -1,0 +1,38 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact:
+    email: modogio@gmail.com
+    name: Giorgio Modoni
+    url: http://
+  description: This is api sample doc.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: API Swagger
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: this is the home of API
+      produces:
+      - application/json
+      summary: Show home route
+  /v1/health:
+    get:
+      description: like a ping with a simple response
+      produces:
+      - application/json
+      summary: health response
+  /v1/ping:
+    get:
+      consumes:
+      - application/json
+      description: this is the home of API
+      produces:
+      - application/json
+      summary: Ping response
+swagger: "2.0"

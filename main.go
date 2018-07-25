@@ -1,3 +1,4 @@
+// main package, app entry point
 package main
 
 import (

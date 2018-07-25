@@ -9,6 +9,7 @@ import (
 	"net/http"
 )
 
+// middleware that add jwt Auth
 func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token, err := request.ParseFromRequest(c.Request, request.OAuth2Extractor, func(token *jwtLib.Token) (interface{}, error) {
@@ -29,6 +30,7 @@ func JwtAuth(secret string, decode bool) gin.HandlerFunc {
 
 			if decoded, ok := token.Claims.(jwtLib.MapClaims); ok && token.Valid {
 				c.Set("jwt", decoded) // add decoded data for controller
+				c.Next()
 
 			} else {
 				c.JSON(http.StatusUnauthorized, gin.H{"code": 102, "error": "Authorization token failed"})

@@ -1,9 +1,10 @@
+// package config provides  configuration by environment
 package config
 
 import (
 	"log"
-	"path/filepath"
 	"github.com/spf13/viper"
+	"fmt"
 )
 
 var config *viper.Viper
@@ -11,29 +12,37 @@ var config *viper.Viper
 // Init is an exported method that takes the environment starts the viper
 // (external lib) and returns the configuration struct.
 func Init(env string) {
-	var err error
+
+	// display info about config
+	printInfo(env)
+
 	v := viper.New()
 	v.SetConfigType("yaml")
 	v.SetConfigName(env)
+
 	if env == "test" {
 		v.AddConfigPath("../config/")
 	} else {
 		v.AddConfigPath("./config/")
 	}
-	err = v.ReadInConfig()
-	if err != nil {
-		log.Fatal("error on parsing configuration file")
+
+	if err := v.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file, %s", err)
 	}
+
 	config = v
 }
 
-func relativePath(basedir string, path *string) {
-	p := *path
-	if p != "" && p[0] != '/' {
-		*path = filepath.Join(basedir, p)
-	}
-}
-
+// main function call this to get config
 func GetConfig() *viper.Viper {
 	return config
+}
+
+// print some info on init
+func printInfo(env string) {
+	fmt.Println("")
+	fmt.Println("***************************************************")
+	fmt.Println("Application started with config:", env)
+	fmt.Println("***************************************************")
+	fmt.Println("")
 }

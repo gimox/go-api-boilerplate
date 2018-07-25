@@ -1,3 +1,4 @@
+// start server
 package server
 
 import (
@@ -5,7 +6,7 @@ import (
 	"go-api-boilerplate/lib/config"
 )
 
-
+// main function for server start
 func Init() {
 	configEnv := config.GetConfig() // get configuration enviroment ./config/yourenv
 
@@ -14,7 +15,7 @@ func Init() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-
-	r := NewRouter(configEnv) // start routes
+	// init router
+	r := NewRouter(configEnv)                       // start routes
 	r.Run(":" + configEnv.GetString("server.port")) // start server
 }

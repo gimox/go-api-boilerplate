@@ -19,7 +19,6 @@ func AuthSignIn(c *gin.Context) {
 		return
 	}
 
-
 	c.JSON(http.StatusOK, gin.H{"message": "hi", "credentials": loginModel})
 
 	return
