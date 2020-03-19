@@ -2,24 +2,26 @@
 package server
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"go-api-boilerplate/middlewares"
-	"go-api-boilerplate/controllers"
-	"github.com/gin-contrib/cors"
-	_ "go-api-boilerplate/docs"
+	swaggerFiles "github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
-
+	//"github.com/swaggo/gin-swagger/swaggerFiles"
+	"go-api-boilerplate/controllers"
+	_ "go-api-boilerplate/docs"
+	"go-api-boilerplate/middlewares"
 )
 
 // @title API Swagger
 // @version 1.0
 // @description This is api sample doc.
 // @termsOfService http://swagger.io/terms/
+
 // @contact.name Giorgio Modoni
 // @contact.url http://
 // @contact.email modogio@gmail.com
+
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 // @host localhost:8080
@@ -61,6 +63,7 @@ func NewRouter(config *viper.Viper) *gin.Engine {
 		private.GET("/user", controllers.GetUser)
 	}
 
+	// url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return router

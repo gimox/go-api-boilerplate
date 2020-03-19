@@ -4,13 +4,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
 	"go-api-boilerplate/lib/config"
 	"go-api-boilerplate/server"
+	"os"
 )
 
 func main() {
-	enviroment := flag.String("e", "development", "")
+	environment := flag.String("e", "development", "")
 
 	flag.Usage = func() {
 		fmt.Println("Usage: server -e {mode}")
@@ -19,7 +19,7 @@ func main() {
 
 	flag.Parse()
 
-	config.Init(*enviroment)
+	config.Init(*environment)
 
 	server.Init()
 }

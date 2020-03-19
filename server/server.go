@@ -13,6 +13,8 @@ func Init() {
 	// disable log per production mode
 	if configEnv.GetBool("production") {
 		gin.SetMode(gin.ReleaseMode)
+	} else {
+		gin.SetMode(gin.DebugMode)
 	}
 
 	// init router

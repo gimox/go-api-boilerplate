@@ -1,10 +1,10 @@
 package middlewares
 
 import (
+	"errors"
 	jwtLib "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
 	"github.com/gin-gonic/gin"
-	"errors"
 	"log"
 	"net/http"
 )
